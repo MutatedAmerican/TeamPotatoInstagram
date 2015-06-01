@@ -2,6 +2,7 @@ package us.theappacademy.teampotatoinstagram;
 
 import android.app.Fragment;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -16,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import us.theappacademy.oauth.OAuthParameters;
@@ -65,7 +68,8 @@ public class PictureFragment extends OAuthFragment{
             Log.e("Picture Fragment", "JSONException: " + error);
         }
 
-        //imageView=profile.get(0).imageURL.;
+        imageView.setImageURI(Uri.parse(profile.get(0).imageURL));
+
     }
 
     @Override
@@ -94,11 +98,8 @@ public class PictureFragment extends OAuthFragment{
         //inflate our own view, creating an XML-based layout
         View fragmentView= inflater.inflate(R.layout.fragment_game, container, false);
 
-        //get ids within XML layout and save in variable; textView
-        textView= (TextView)fragmentView.findViewById(R.id.textView);
-
         //get ids within XML layout and save in variable; imageView
-        imageView= (ImageView)fragmentView.findViewById(R.id.image1);
+        imageView= (ImageView)fragmentView.findViewById(R.id.image);
 
         //get ids within XML layout and save in variable; imageView2
         imageView2= (ImageView)fragmentView.findViewById(R.id.image2);
